@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vincestyling="http://schemas.android.com/apk/res/com.vincestyling.circleimageView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    android:padding="10dp"
+    android:columnCount="2"
+    android:useDefaultMargins="true">
+
+    <LinearLayout
+        android:layout_width="114dp"
+        android:layout_height="114dp"
+        android:background="#1c272a">
+
+        <com.vincestyling.circleimageView.CircleImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            vincestyling:bottomCircleOffColor="#1996f9ef"
+            vincestyling:bottomCircleOnColor="#3396f9ef"
+            vincestyling:bottomCircleIndent="5dp"
+            vincestyling:middleCircleOffColor="#ffffff"
+            vincestyling:middleCircleOnColor="#d3d3d3"
+            vincestyling:middleCircleIndent="2dp"
+            vincestyling:src="@drawable/aboutme_unlog_default_head1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="114dp"
+        android:layout_height="114dp"
+        android:background="#1c272a">
+
+        <com.vincestyling.circleimageView.CircleImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            vincestyling:bottomCircleOffColor="@android:color/transparent"
+            vincestyling:bottomCircleOnColor="#3396f9ef"
+            vincestyling:bottomCircleIndent="5dp"
+            vincestyling:middleCircleOffColor="#ffffff"
+            vincestyling:middleCircleOnColor="#d3d3d3"
+            vincestyling:middleCircleIndent="2dp"
+            vincestyling:src="@drawable/aboutme_unlog_default_head1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="114dp"
+        android:layout_height="114dp"
+        android:background="#1c272a">
+
+        <com.vincestyling.circleimageView.CircleImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            vincestyling:bottomCircleOffColor="#1996f9ef"
+            vincestyling:bottomCircleOnColor="#3396f9ef"
+            vincestyling:bottomCircleIndent="5dp"
+            vincestyling:middleCircleOffColor="@android:color/transparent"
+            vincestyling:middleCircleOnColor="#ffffff"
+            vincestyling:middleCircleIndent="2dp"
+            vincestyling:src="@drawable/aboutme_unlog_default_head1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="114dp"
+        android:layout_height="114dp"
+        android:background="#1c272a">
+
+        <com.vincestyling.circleimageView.CircleImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            vincestyling:bottomCircleOffColor="#1996f9ef"
+            vincestyling:bottomCircleOnColor="#3396f9ef"
+            vincestyling:bottomCircleIndent="5dp"
+            vincestyling:src="@drawable/aboutme_unlog_default_head1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="114dp"
+        android:layout_height="114dp"
+        android:background="#1c272a">
+
+        <com.vincestyling.circleimageView.CircleImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            vincestyling:middleCircleOffColor="#ffffff"
+            vincestyling:middleCircleOnColor="#d3d3d3"
+            vincestyling:middleCircleIndent="2dp"
+            vincestyling:src="@drawable/aboutme_unlog_default_head1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="114dp"
+        android:layout_height="114dp"
+        android:background="#1c272a">
+
+        <com.vincestyling.circleimageView.CircleImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            vincestyling:src="@drawable/aboutme_unlog_default_head1"/>
+
+    </LinearLayout>
+
+</GridLayout>
