@@ -3,15 +3,15 @@ package com.vincestyling.circleimageView;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.*;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.widget.ImageView;
+import android.view.View;
 
 import java.lang.ref.WeakReference;
 
-public class CircleImageView extends ImageView {
+public class CircleImagePureView extends View {
+	private int mImgRes;
+
 	private int mMiddleCircleIndent;
 	private int mBottomCircleIndent;
 
@@ -26,10 +26,12 @@ public class CircleImageView extends ImageView {
 	private WeakReference<Bitmap> mOnBitmap;
 	private WeakReference<Bitmap> mOffBitmap;
 
-	public CircleImageView(Context context, AttributeSet attrs) {
+	public CircleImagePureView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
 		TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.CircleImageView);
+
+		mImgRes = array.getResourceId(R.styleable.CircleImageView_src, 0);
 
 		mBottomCircleOnColor = array.getColor(R.styleable.CircleImageView_bottomCircleOnColor, 0);
 		mBottomCircleOffColor = array.getColor(R.styleable.CircleImageView_bottomCircleOffColor, 0);
@@ -45,7 +47,7 @@ public class CircleImageView extends ImageView {
 
 	@Override
 	protected void onDraw(Canvas canvas) {
-		if (isInEditMode()) {
+		if (isInEditMode() || mImgRes == 0) {
 			super.onDraw(canvas);
 			return;
 		}
@@ -56,12 +58,6 @@ public class CircleImageView extends ImageView {
 				mOffBitmap != null ? mOffBitmap.get() : null;
 
 		if (bitmap == null || bitmap.isRecycled()) {
-			BitmapDrawable srcDrawable = (BitmapDrawable) getDrawable();
-			if (srcDrawable == null) return;
-
-			Bitmap srcBitmap = srcDrawable.getBitmap();
-			if (srcBitmap == null) return;
-
 			bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
 			Canvas tmpCanvas = new Canvas(bitmap);
 
@@ -91,29 +87,22 @@ public class CircleImageView extends ImageView {
 				paint.setColor(oriColor);
 			}
 
+			int contentRadius = middleCircleRadius - mMiddleCircleIndent;
+			int headWidth = contentRadius * 2;
 
-//			int width = srcBitmap.getWidth();
-//			int height = srcBitmap.getHeight();
-//			float scaleWidth = ((float) headWidth) / width;
-//			float scaleHeight = ((float) headWidth) / height;
-//			Matrix matrix = new Matrix();
-//			matrix.postScale(scaleWidth, scaleHeight);
-//			srcBitmap = Bitmap.createBitmap(srcBitmap, 0, 0, width, height, matrix, false);
-//			int newW = srcBitmap.getWidth();
-//			int newH = srcBitmap.getHeight();
+			Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), mImgRes);
 
+			int width = originalBitmap.getWidth();
+			int height = originalBitmap.getHeight();
+			float scaleWidth = ((float) headWidth) / width;
+			float scaleHeight = ((float) headWidth) / height;
+			Matrix matrix = new Matrix();
+			matrix.postScale(scaleWidth, scaleHeight);
+			originalBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, width, height, matrix, false);
 
-//			Bitmap scaleBitmap = Bitmap.createBitmap(headWidth, headWidth, Bitmap.Config.RGB_565);
-//			Canvas tmpCanvas = new Canvas(scaleBitmap);
-//			tmpCanvas.drawBitmap(srcBitmap,
-//					new Rect(0, 0, srcBitmap.getWidth(), srcBitmap.getHeight()),
-//					new Rect(0, 0, headWidth, headWidth), mPaint);
-
-
-			BitmapShader shader = new BitmapShader(srcBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+			BitmapShader shader = new BitmapShader(originalBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
 			paint.setShader(shader);
 
-			int contentRadius = middleCircleRadius - mMiddleCircleIndent;
 			tmpCanvas.drawCircle(centerX, centerX, contentRadius, paint);
 
 			if (mIsStatusOn) {
@@ -124,29 +113,6 @@ public class CircleImageView extends ImageView {
 		}
 
 		if (bitmap != null) canvas.drawBitmap(bitmap, 0.0f, 0.0f, null);
-	}
-
-	@Override
-	public void setImageResource(int resId) {
-		clearBitmapCache();
-		super.setImageResource(resId);
-	}
-
-	@Override
-	public void setImageBitmap(Bitmap bm) {
-		clearBitmapCache();
-		super.setImageBitmap(bm);
-	}
-
-	@Override
-	public void setImageDrawable(Drawable drawable) {
-		clearBitmapCache();
-		super.setImageDrawable(drawable);
-	}
-
-	private void clearBitmapCache() {
-		if (mOffBitmap != null) mOffBitmap.clear();
-		if (mOnBitmap != null) mOnBitmap.clear();
 	}
 
 	@Override

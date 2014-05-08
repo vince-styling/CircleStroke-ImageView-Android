@@ -1,121 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:vincestyling="http://schemas.android.com/apk/res/com.vincestyling.circleimageView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/darker_gray"
     android:padding="10dp"
-    android:columnCount="2"
-    android:useDefaultMargins="true">
+    android:scrollbarStyle="outsideInset">
 
-    <LinearLayout
-        android:layout_width="114dp"
-        android:layout_height="114dp"
-        android:background="#1c272a">
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:useDefaultMargins="true">
 
-        <com.vincestyling.circleimageView.CircleImageView
-            android:id="@+id/imvCircle1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            vincestyling:bottomCircleOffColor="#1996f9ef"
-            vincestyling:bottomCircleOnColor="#3396f9ef"
-            vincestyling:bottomCircleIndent="5dp"
-            vincestyling:middleCircleOffColor="#ffffff"
-            vincestyling:middleCircleOnColor="#d3d3d3"
-            vincestyling:middleCircleIndent="2dp"
-            android:src="@drawable/aboutme_unlog_default_head1"/>
+        <LinearLayout
+            android:layout_width="116dp"
+            android:layout_height="116dp"
+            android:background="#1c272a">
 
-    </LinearLayout>
+            <com.vincestyling.circleimageView.CircleImageView
+                android:id="@+id/imvMemberHead"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                vincestyling:bottomCircleOffColor="#1996f9ef"
+                vincestyling:bottomCircleOnColor="#3396f9ef"
+                vincestyling:bottomCircleIndent="5dp"
+                vincestyling:middleCircleOffColor="@android:color/transparent"
+                vincestyling:middleCircleOnColor="#ffffff"
+                vincestyling:middleCircleIndent="2dp"/>
 
-    <LinearLayout
-        android:layout_width="114dp"
-        android:layout_height="114dp"
-        android:background="#1c272a">
+        </LinearLayout>
 
-        <com.vincestyling.circleimageView.CircleImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            vincestyling:bottomCircleOffColor="@android:color/transparent"
-            vincestyling:bottomCircleOnColor="#3396f9ef"
-            vincestyling:bottomCircleIndent="5dp"
-            vincestyling:middleCircleOffColor="#ffffff"
-            vincestyling:middleCircleOnColor="#d3d3d3"
-            vincestyling:middleCircleIndent="2dp"
-            android:src="@drawable/aboutme_unlog_default_head1"/>
+        <LinearLayout
+            android:layout_width="116dp"
+            android:layout_height="116dp"
+            android:background="#1c272a">
 
-    </LinearLayout>
+            <com.vincestyling.circleimageView.CircleImageView
+                android:id="@+id/imvCircle1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                vincestyling:bottomCircleOffColor="#1996f9ef"
+                vincestyling:bottomCircleOnColor="#3396f9ef"
+                vincestyling:bottomCircleIndent="5dp"
+                vincestyling:middleCircleOffColor="#ffffff"
+                vincestyling:middleCircleOnColor="#d3d3d3"
+                vincestyling:middleCircleIndent="2dp"
+                android:src="@drawable/aboutme_log_default_head"/>
 
-    <LinearLayout
-        android:layout_width="114dp"
-        android:layout_height="114dp"
-        android:background="#1c272a">
+        </LinearLayout>
 
-        <com.vincestyling.circleimageView.CircleImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            vincestyling:bottomCircleOffColor="#1996f9ef"
-            vincestyling:bottomCircleOnColor="#3396f9ef"
-            vincestyling:bottomCircleIndent="5dp"
-            vincestyling:middleCircleOffColor="@android:color/transparent"
-            vincestyling:middleCircleOnColor="#ffffff"
-            vincestyling:middleCircleIndent="2dp"
-            android:src="@drawable/aboutme_unlog_default_head1"/>
+        <LinearLayout
+            android:layout_width="116dp"
+            android:layout_height="116dp"
+            android:background="#1c272a">
 
-    </LinearLayout>
+            <com.vincestyling.circleimageView.CircleImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                vincestyling:bottomCircleOffColor="@android:color/transparent"
+                vincestyling:bottomCircleOnColor="#3396f9ef"
+                vincestyling:bottomCircleIndent="5dp"
+                vincestyling:middleCircleOffColor="#ffffff"
+                vincestyling:middleCircleOnColor="#d3d3d3"
+                vincestyling:middleCircleIndent="2dp"
+                android:src="@drawable/aboutme_log_default_head"/>
 
-    <LinearLayout
-        android:layout_width="114dp"
-        android:layout_height="114dp"
-        android:background="#1c272a">
+        </LinearLayout>
 
-        <com.vincestyling.circleimageView.CircleImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            vincestyling:bottomCircleOffColor="#1996f9ef"
-            vincestyling:bottomCircleOnColor="#3396f9ef"
-            vincestyling:bottomCircleIndent="5dp"
-            android:src="@drawable/aboutme_unlog_default_head1"/>
+        <LinearLayout
+            android:layout_width="116dp"
+            android:layout_height="116dp"
+            android:background="#1c272a">
 
-    </LinearLayout>
+            <com.vincestyling.circleimageView.CircleImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                vincestyling:bottomCircleOffColor="#1996f9ef"
+                vincestyling:bottomCircleOnColor="#3396f9ef"
+                vincestyling:bottomCircleIndent="5dp"
+                vincestyling:middleCircleOffColor="@android:color/transparent"
+                vincestyling:middleCircleOnColor="#ffffff"
+                vincestyling:middleCircleIndent="2dp"
+                android:src="@drawable/aboutme_log_default_head"/>
 
-    <LinearLayout
-        android:layout_width="114dp"
-        android:layout_height="114dp"
-        android:background="#1c272a">
+        </LinearLayout>
 
-        <com.vincestyling.circleimageView.CircleImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            vincestyling:middleCircleOffColor="#ffffff"
-            vincestyling:middleCircleOnColor="#d3d3d3"
-            vincestyling:middleCircleIndent="2dp"
-            android:src="@drawable/aboutme_unlog_default_head1"/>
+        <LinearLayout
+            android:layout_width="116dp"
+            android:layout_height="116dp"
+            android:background="#1c272a">
 
-    </LinearLayout>
+            <com.vincestyling.circleimageView.CircleImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                vincestyling:bottomCircleOffColor="#1996f9ef"
+                vincestyling:bottomCircleOnColor="#3396f9ef"
+                vincestyling:bottomCircleIndent="5dp"
+                android:src="@drawable/aboutme_log_default_head"/>
 
-    <LinearLayout
-        android:layout_width="114dp"
-        android:layout_height="114dp"
-        android:background="#1c272a">
+        </LinearLayout>
 
-        <com.vincestyling.circleimageView.CircleImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/aboutme_unlog_default_head1"/>
+        <LinearLayout
+            android:layout_width="116dp"
+            android:layout_height="116dp"
+            android:background="#1c272a">
 
-    </LinearLayout>
+            <com.vincestyling.circleimageView.CircleImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                vincestyling:middleCircleOffColor="#ffffff"
+                vincestyling:middleCircleOnColor="#d3d3d3"
+                vincestyling:middleCircleIndent="2dp"
+                android:src="@drawable/aboutme_log_default_head"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/btnRefresh1"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="RefreshFirst"/>
+        <LinearLayout
+            android:layout_width="116dp"
+            android:layout_height="116dp"
+            android:background="#1c272a">
 
-    </LinearLayout>
+            <com.vincestyling.circleimageView.CircleImageView
+                android:id="@+id/imvWithoutBorder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/aboutme_log_default_head"/>
 
-</GridLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="116dp"
+            android:layout_height="116dp"
+            android:background="#1c272a">
+
+            <com.vincestyling.circleimageView.CircleImagePureView
+                android:layout_width="116dp"
+                android:layout_height="116dp"
+                vincestyling:bottomCircleOffColor="#1996f9ef"
+                vincestyling:bottomCircleOnColor="#3396f9ef"
+                vincestyling:bottomCircleIndent="5dp"
+                vincestyling:middleCircleOffColor="@android:color/transparent"
+                vincestyling:middleCircleOnColor="#ffffff"
+                vincestyling:middleCircleIndent="2dp"
+                vincestyling:src="@drawable/large_headimg"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="116dp"
+            android:layout_height="116dp"
+            android:background="#1c272a">
+
+            <com.vincestyling.circleimageView.CircleImagePureView
+                android:layout_width="116dp"
+                android:layout_height="116dp"
+                vincestyling:bottomCircleOffColor="#1996f9ef"
+                vincestyling:bottomCircleOnColor="#3396f9ef"
+                vincestyling:bottomCircleIndent="5dp"
+                vincestyling:middleCircleOffColor="@android:color/transparent"
+                vincestyling:middleCircleOnColor="#ffffff"
+                vincestyling:middleCircleIndent="2dp"
+                vincestyling:src="@drawable/small_head_img"/>
+
+        </LinearLayout>
+
+    </GridLayout>
+
+</ScrollView>
