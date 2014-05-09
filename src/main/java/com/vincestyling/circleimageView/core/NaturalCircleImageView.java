@@ -1,4 +1,4 @@
-package com.vincestyling.circleimageView;
+package com.vincestyling.circleimageView.core;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -6,10 +6,11 @@ import android.graphics.*;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import com.vincestyling.circleimageView.R;
 
 import java.lang.ref.WeakReference;
 
-public class CircleImagePureView extends View {
+public class NaturalCircleImageView extends View {
 	private int mImgRes;
 
 	private int mMiddleCircleIndent;
@@ -26,7 +27,7 @@ public class CircleImagePureView extends View {
 	private WeakReference<Bitmap> mOnBitmap;
 	private WeakReference<Bitmap> mOffBitmap;
 
-	public CircleImagePureView(Context context, AttributeSet attrs) {
+	public NaturalCircleImageView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
 		TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.CircleImageView);
@@ -117,19 +118,22 @@ public class CircleImagePureView extends View {
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		if (mBottomCircleIndent == 0 && mMiddleCircleIndent == 0) return super.onTouchEvent(event);
-
 		switch (event.getAction()) {
 			case MotionEvent.ACTION_DOWN:
 				mIsStatusOn = true;
 				invalidate();
 				return true;
-			case MotionEvent.ACTION_UP:
+			case MotionEvent.ACTION_CANCEL:
 				mIsStatusOn = false;
 				invalidate();
-				return true;
+				return false;
+			case MotionEvent.ACTION_UP:
+				mIsStatusOn = false;
+				performClick();
+				invalidate();
+				return false;
 		}
-
 		return super.onTouchEvent(event);
 	}
+
 }
