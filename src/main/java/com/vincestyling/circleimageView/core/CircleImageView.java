@@ -12,8 +12,8 @@ import com.vincestyling.circleimageView.R;
 import java.lang.ref.WeakReference;
 
 public abstract class CircleImageView extends ImageView {
-	protected int mMiddleCircleIndent;
 	protected int mBottomCircleIndent;
+	protected int mMiddleCircleIndent;
 
 	protected int mBottomCircleOnColor;
 	protected int mBottomCircleOffColor;
@@ -148,8 +148,10 @@ public abstract class CircleImageView extends ImageView {
 	public boolean onTouchEvent(MotionEvent event) {
 		switch (event.getAction()) {
 			case MotionEvent.ACTION_DOWN:
-				mIsStatusOn = true;
-				invalidate();
+				if (mBottomCircleIndent > 0 || mMiddleCircleIndent > 0) {
+					mIsStatusOn = true;
+					invalidate();
+				}
 				return true;
 			case MotionEvent.ACTION_CANCEL:
 				mIsStatusOn = false;
