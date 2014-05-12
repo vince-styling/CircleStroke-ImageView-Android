@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Circle-ImageView-Android</string>
+    <string name="app_name">Circle-ImageView</string>
 
     <declare-styleable name="CircleImageView">
         <attr name="src" format="reference" />
@@ -13,4 +13,12 @@
         <attr name="middleCircleOffColor" format="color" />
         <attr name="middleCircleIndent" format="dimension" />
     </declare-styleable>
+
+    <string-array name="action_list">
+        <item>RoundRect</item>
+        <item>Picture</item>
+        <item>ClipPath</item>
+        <item>Natural</item>
+    </string-array>
+
 </resources>

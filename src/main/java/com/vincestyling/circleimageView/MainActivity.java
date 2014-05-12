@@ -1,46 +1,62 @@
 package com.vincestyling.circleimageView;
 
+import android.app.ActionBar;
 import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.SpinnerAdapter;
 import android.widget.Toast;
+import com.vincestyling.circleimageView.page.ClipPathFragment;
+import com.vincestyling.circleimageView.page.NaturalFragment;
+import com.vincestyling.circleimageView.page.PictureFragment;
+import com.vincestyling.circleimageView.page.RoundRectFragment;
 
-public class MainActivity extends Activity {
-//	String photo = "http://tp1.sinaimg.cn/1768720064/180/40043799298/1";
-	String photo = "https://avatars3.githubusercontent.com/u/3348207?s=460";
-//	String photo = "http://ww1.sinaimg.cn/crop.1.87.442.442.1024/696c86c0gw1ecb74t8l2xj20cd0hegna.jpg";
-//	String photo = "http://ww1.sinaimg_diderror.cn/crop.1.87.442.442.1024/696c86c0gw1ecb74t8l2xj20cd0hegna.jpg";
-
+public class MainActivity extends Activity implements ActionBar.OnNavigationListener {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
 
-		ImageView imvMemberHead = (ImageView) findViewById(R.id.imvMemberHead);
-		Netroid.displayImage(photo, imvMemberHead,
-				R.drawable.aboutme_log_default_head, R.drawable.aboutme_unlog_default_head_sml);
+		getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
-		imvMemberHead.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				showToastMsg("imvMemberHead click!");
-			}
-		});
+		getActionBar().setListNavigationCallbacks(
+				ArrayAdapter.createFromResource(
+						getActionBar().getThemedContext(),
+						R.array.action_list,
+						android.R.layout.simple_spinner_dropdown_item),
+				this);
 
-		findViewById(R.id.imvWithoutBorder).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				showToastMsg("imvWithoutBorder click!");
-			}
-		});
+		if (savedInstanceState == null) {
+			getFragmentManager().beginTransaction()
+					.replace(android.R.id.content, new RoundRectFragment()).commit();
+		}
 	}
 
-	Toast mToast;
-	private void showToastMsg(String msg) {
-		if (mToast != null) mToast.cancel();
-		mToast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
-		mToast.show();
+	@Override
+	public boolean onNavigationItemSelected(int itemPosition, long itemId) {
+		Fragment newFragment;
+		switch (itemPosition) {
+			default:
+			case 0:
+				newFragment = new RoundRectFragment();
+				break;
+			case 1:
+				newFragment = new PictureFragment();
+				break;
+			case 2:
+				newFragment = new ClipPathFragment();
+				break;
+			case 3:
+				newFragment = new NaturalFragment();
+				break;
+		}
+
+		getFragmentManager().beginTransaction()
+				.replace(android.R.id.content, newFragment).commit();
+
+		return true;
 	}
 
 }

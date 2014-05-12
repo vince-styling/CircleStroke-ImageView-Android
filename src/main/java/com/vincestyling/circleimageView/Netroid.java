@@ -3,7 +3,6 @@ package com.vincestyling.circleimageView;
 import android.content.Context;
 import android.widget.ImageView;
 import com.duowan.mobile.netroid.RequestQueue;
-import com.duowan.mobile.netroid.cache.BitmapImageCache;
 import com.duowan.mobile.netroid.cache.DiskCache;
 import com.duowan.mobile.netroid.image.NetworkImageView;
 import com.duowan.mobile.netroid.stack.HurlStack;
@@ -15,9 +14,8 @@ import java.io.File;
 
 public class Netroid {
 	// http parameters
-	public static final int HTTP_MEMORY_CACHE_SIZE = 2 * 1024 * 1024; // 2MB
-	public static final int HTTP_DISK_CACHE_SIZE = 50 * 1024 * 1024; // 50MB
-	public static final String HTTP_DISK_CACHE_DIR_NAME = "netroid";
+	public static final int HTTP_DISK_CACHE_SIZE = 5 * 1024 * 1024; // 5MB
+	public static final String HTTP_DISK_CACHE_DIR_NAME = "vincestyling";
 
 	/** The queue. :-) */
 	private static RequestQueue mRequestQueue;
@@ -31,10 +29,10 @@ public class Netroid {
 	public static void init(Context ctx) {
 		if (mRequestQueue == null) {
 			mRequestQueue = new RequestQueue(
-					new BasicNetwork(new HurlStack("vincestyling", null), HTTP.UTF_8), 4, new DiskCache(
+					new BasicNetwork(new HurlStack("vincestyling", null), HTTP.UTF_8), 2, new DiskCache(
 					new File(ctx.getCacheDir(), HTTP_DISK_CACHE_DIR_NAME), HTTP_DISK_CACHE_SIZE));
 
-			mImageLoader = new SelfImageLoader(mRequestQueue, new BitmapImageCache(HTTP_MEMORY_CACHE_SIZE));
+			mImageLoader = new SelfImageLoader(mRequestQueue, null);
 
 			mRequestQueue.start();
 		} else {
