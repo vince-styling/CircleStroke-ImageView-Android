@@ -74,9 +74,30 @@ public abstract class CircleImageView extends ImageView {
 		paint.setAntiAlias(true);
 		paint.setDither(true);
 
+		// ------------------------------ draw rounding bitmap
+		roundBitmap(nativeCanvas, paint);
+
+		// ------------------------------ draw content bitmap with proper size (zoom in|zoom out)
+		int contentAreaSize = getWidth() - mBottomCircleIndent * 2;
+		Bitmap contentBitmap = Bitmap.createBitmap(contentAreaSize, contentAreaSize, Bitmap.Config.ARGB_8888);
+		Canvas contentCanvas = new Canvas(contentBitmap);
+		srcDrawable.setBounds(0, 0, contentAreaSize, contentAreaSize);
+		srcDrawable.draw(contentCanvas);
+
+		cropBitmap(nativeCanvas, contentBitmap, contentAreaSize, paint);
+
+		if (mIsStatusOn) {
+			mOnBitmap = new WeakReference<Bitmap>(bitmap);
+		} else {
+			mOffBitmap = new WeakReference<Bitmap>(bitmap);
+		}
+
+		return bitmap;
+	}
+
+	protected void roundBitmap(Canvas nativeCanvas, Paint paint) {
 		float centerX = getWidth() / 2;
 		float centerY = getHeight() / 2;
-
 
 		// ------------------------------ draw bottom circle
 		float bottomCircleRadius = getWidth() / 2;
@@ -96,24 +117,6 @@ public abstract class CircleImageView extends ImageView {
 			nativeCanvas.drawCircle(centerX, centerY, middleCircleRadius, paint);
 			paint.setColor(oriColor);
 		}
-
-
-		// ------------------------------ draw content bitmap with proper size (zoom in|zoom out)
-		int contentAreaSize = getWidth() - mBottomCircleIndent * 2;
-		Bitmap contentBitmap = Bitmap.createBitmap(contentAreaSize, contentAreaSize, Bitmap.Config.ARGB_8888);
-		Canvas contentCanvas = new Canvas(contentBitmap);
-		srcDrawable.setBounds(0, 0, contentAreaSize, contentAreaSize);
-		srcDrawable.draw(contentCanvas);
-
-		cropBitmap(nativeCanvas, contentBitmap, contentAreaSize, paint);
-
-		if (mIsStatusOn) {
-			mOnBitmap = new WeakReference<Bitmap>(bitmap);
-		} else {
-			mOffBitmap = new WeakReference<Bitmap>(bitmap);
-		}
-
-		return bitmap;
 	}
 
 	protected abstract void cropBitmap(Canvas nativeCanvas, Bitmap contentBitmap, int contentAreaSize, Paint paint);
