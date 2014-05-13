@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Circle-ImageView</string>
+    <string name="app_name">CircleStroke-ImageView</string>
 
     <declare-styleable name="CircleImageView">
         <attr name="src" format="reference" />
